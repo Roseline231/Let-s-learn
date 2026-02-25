@@ -1,11 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THE DISPATCH — Newsroom</title>
+
+  <!-- Google Fonts trial-->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="index.css"/>
+  <script src="index.js" defer></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+      
+  <header>
+    <div class="masthead-top">
+      <span id="live-date"></span>
+      <span>Newsroom Edition</span>
+      <span>All Stories. All Truth.</span>
+    </div>
+    <div class="masthead-title">
+      <h1>The <span>Dispatch</span></h1>
+      <p class="tagline">Independent · Fearless · Unfiltered</p>
+    </div>
+  </header>
+     
+  <div class="toolbar">
+    <input type="text" id="search-input" placeholder="Search headlines…" oninput="renderGrid()"/>
+    
+    <div id="category-filters">
+      <button class="filter-tab active" data-cat="all">All</button>
+      <button class="filter-tab" data-cat="World">World</button>
+      <button class="filter-tab" data-cat="Tech">Tech</button>
+      <button class="filter-tab" data-cat="Politics">Politics</button>
+      <button class="filter-tab" data-cat="Sports">Sports</button>
+    </div>
+
+    <button onclick="openAddModal()">＋ Publish Story</button>
+  </div>
+  <main>
+    <div id="news-grid"></div>
+  </main>
+
+  <!-- Modal for Adding/Editing Stories -->
+  <div class="modal-overlay" id="story-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Publish New Story</h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Headline *</label>
+          <input type="text" id="field-headline" placeholder="Write a compelling headline…"/>
+        </div>
+        <div class="form-row">
+          <label>Category *</label>
+          <select id="field-category">
+            <option value="">— Select —</option>
+            <option>World</option>
+            <option>Politics</option>
+            <option>Tech</option>
+            <option>Sports</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Reporter Name *</label>
+          <input type="text" id="field-reporter" placeholder="By Emmanuel Magok"/>
+        </div>
+         <div class="form-row">
+          <label>Summary / Story *</label>
+          <textarea id="field-body" placeholder="Write the story…"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="btn-submit" onclick="submitStory()">Publish Story</button>
+
+          
+        </div> 
+
+      </div>
+    </div>
+  </div>
+
+  <!-- This Modal for Confirming Delete -->
+   <div class="modal-overlay" id="confirm-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Delete This Story?</h2>
+      </div>
+      <div class="modal-body">
+        <p>This action cannot be undone.</p>
+        <div class="form-actions">
+          <button class="btn-cancel" onclick="closeConfirm()">Keep It</button>
+          <button class="btn-submit" onclick="executeDelete()">Delete Forever</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer>
+    © 2024 The Dispatch Newsroom · Built with integrity
+  </footer>
+
+
+
 </body>
-</html>
+
